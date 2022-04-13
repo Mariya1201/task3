@@ -1,13 +1,13 @@
 #include "headers.h"
 
-/*int Autotest1() {
+int Autotest1() {
     int result = 1;
 
     char data1[6] = "test1";
-    const char* data2 = "22";
+    const char* data2 = "22222";
 
     CString0 c1("out1.txt", data1, 5);
-    CString1 c2("out2.txt", data2, 2);
+    CString1 c2("out2.txt", data2, 5);
 
     CString0 c = c1 + c2;
     int dataSize = c.getDataSize();
@@ -25,7 +25,7 @@
     if (c.getFileName() != "out1.txt") {
         result = 0;
     }
-    if (data[0] != 't' || data[1] != 'e' || data[2] != 's' || data[3] != 't' || data[4] != '1' || data[5] != '2' || data[6] != '2') {
+    if (data[0] != 't' || data[1] != 'e' || data[2] != 's' || data[3] != 't' || data[4] != '1' || data[5] != '2' || data[6] != '2' || data[7] != '2' || data[8] != '2' || data[9] != '2') {
         result = 0;
     }
 
@@ -65,7 +65,7 @@ int Autotest2() {
 
 
     return result;
-}*/
+}
 
 int Autotest3() {
     int result = 1;
@@ -89,11 +89,11 @@ int Autotest3() {
 }
 
 
-/*int Autotest() {
+int Autotest() {
     if (Autotest1() * Autotest2() * Autotest3() == 1) return 1;
     return 0;
-}*/
-int Autotest() {
+}
+/*int Autotest() {
     if ( Autotest3() == 1) return 1;
     return 0;
-}
+}*/

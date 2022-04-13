@@ -46,19 +46,19 @@ int main() {
             temp >> type >> outputFilename >> data;
 
             int dataSize = data.length();
-            char *cstr = new char[dataSize + 1];
+            //char *cstr = new char[dataSize + 1];
             //strcpy_s(cstr, data.c_str());
-            for (int k = 0; k < dataSize; k++) {
-                cstr[k] = data[k];
-            }
+            //for (int k = 0; k < dataSize; k++) {
+             //   cstr[k] = data[k];
+            //}
 
             auto Creator = factoryMap.find(type);
             if (Creator == factoryMap.end())
                 throw runtime_error("There is no such class!");
-            vec.push_back(Creator->second->create(outputFilename, cstr, dataSize));
+            vec.push_back(Creator->second->create(outputFilename, data.c_str(), dataSize));
 
 
-            delete [] cstr;
+           // delete [] cstr;
             i++;
         }
         inputFile.close();

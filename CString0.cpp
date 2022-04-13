@@ -27,19 +27,16 @@ CString0 operator+(const CString& first, const CString& second) {
     int dataSize = size1 + size2;
     char *data = new char[dataSize];
     int i = 0;
-    //std::chrono::time_point<std::chrono::system_clock> start =
-    //std::chrono::system_clock::now();
+   
     #pragma omp parallel for
     for (i = 0; i < size1; i++) {
         data[i] = first.get(i);
     }
+    #pragma omp parallel for
     for (int j = 0; j < size2; j++) {
-        data[j+i] = second.get(j);
+        data[j+first.getDataSize()] = second.get(j);
     }
-    //std::chrono::time_point<std::chrono::system_clock> end =
-    //std::chrono::system_clock::now();
-    //int elapsed_ms = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>( end - start).count());
-    //std::cout << "Addition operator runtime is " << elapsed_ms << " ms\n";
+    
     CString0 c(first.getFileName(), data, dataSize);
     return c;
 }
