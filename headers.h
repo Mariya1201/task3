@@ -7,6 +7,7 @@
 #include <vector>
 #include <cstring>
 #include <chrono> 
+#include <random>
 
 #include "CString.h"
 #include "CString0.h"

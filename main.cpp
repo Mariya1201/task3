@@ -1,7 +1,73 @@
 #include "headers.h"
 
+string generate(int max_length) {
+    string possible_characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    random_device rd;
+    mt19937 engine(rd());
+    uniform_int_distribution<> dist(0, possible_characters.size() - 1);
+    string ret = "";
+    for (int i = 0; i < max_length; i++) {
+        int random_index = dist(engine); //get index between 0 and possible_characters.size()-1
+        ret += possible_characters[random_index];
+    }
+    return ret;
+}
 
 int main() {
+
+    if (Autotest() != 1) {
+        cerr << "Error! Tests not passed!" << endl;
+        return -1;
+    }
+
+    try {
+
+        int lenght1 = 10000000;
+        int lenght2 = 10000000;
+
+        string str1 = generate(lenght1);
+        string str2 = generate(lenght2);
+
+        char* data1 = new char[lenght1];
+        char* data2 = new char[lenght2];
+        for (int i = 0; i < lenght1; i++) {
+            data1[i] = str1[i];
+        }
+        for (int i = 0; i < lenght2; i++) {
+            data2[i] = str2[i];
+        }
+
+        CString0 c1("out2_1.txt", data1, lenght1);
+        CString1 c2("out2_2.txt", data2, lenght2);
+
+
+        CString0 d;
+        chrono::time_point<chrono::system_clock> start = chrono::system_clock::now();
+
+        d = c1 + c2;
+
+        chrono::time_point<chrono::system_clock> end = chrono::system_clock::now();
+        int elapsed_ms = static_cast<int>(chrono::duration_cast<chrono::milliseconds>(end - start).count());
+        cout << "Addition operator runtime is " << elapsed_ms << " ms\n";
+
+
+        
+
+
+
+        cout << endl << "Done!" << endl;
+        return 0;
+    }
+
+    catch (const exception& e) {
+        cerr << "Error! " << e.what() << endl;
+        return 1;
+    }
+}
+
+
+
+/*int main() {
 
     if (Autotest() != 1) {
     	cerr << "Error! Tests not passed!" << endl;
@@ -91,4 +157,4 @@ int main() {
         cerr << "Error! " << e.what() << endl;
         return 1;
     }
-}
+}*/

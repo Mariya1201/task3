@@ -1,7 +1,11 @@
 #include "headers.h"
 
 
-CString::CString() {}
+CString::CString() {
+    fileName = "1";
+    dataSize = 0;
+    data = NULL;
+}
 
 CString::CString(string _fileName,  const char* _data, int _dataSize) {
     fileName = _fileName;
